@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --accent-50: 250 245 255;
+    --accent-100: 243 232 255;
+    --accent-200: 233 213 255;
+    --accent-300: 216 180 254;
+    --accent-400: 192 132 252;
+    --accent-500: 167 139 250;
+    --accent-600: 147 51 234;
+    --accent-700: 126 34 206;
+    --accent-800: 107 33 168;
+    --accent-900: 88 28 135;
+    --accent-950: 63 15 92;
+
+    --background: 15 23 42;
+    --foreground: 248 250 252;
+
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-50;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(167, 139, 250, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(147, 51, 234, 0.05) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+
+  * {
+    @apply border-slate-700;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .glass-effect {
+    @apply bg-white/5 dark:bg-slate-900/20 backdrop-blur-xl border border-white/10 dark:border-slate-700/30;
+  }
+
+  .glass-card {
+    @apply glass-effect rounded-2xl p-6 sm:p-8;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-300 via-accent-400 to-accent-500;
+  }
+
+  .neon-glow {
+    @apply shadow-neon;
+  }
+
+  .focus-ring {
+    @apply outline-none ring-2 ring-offset-2 ring-offset-slate-950 ring-accent-500;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  @apply w-3;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-accent-600 rounded-full hover:bg-accent-500;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    @apply !animate-none !transition-none;
+  }
+}
+
+/* Selection styling */
+::selection {
+  @apply bg-accent-500 text-white;
+}
+
+::-moz-selection {
+  @apply bg-accent-500 text-white;
+}
+
+/* Custom animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Form styling */
+input,
+textarea,
+select {
+  @apply bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-2 text-slate-50 placeholder-slate-500 focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-all;
+}
+
+input::placeholder,
+textarea::placeholder {
+  @apply text-slate-400;
+}
+
+/* Link styling */
+a {
+  @apply text-accent-400 hover:text-accent-300 transition-colors;
+}
+
+a:focus-visible {
+  @apply focus-ring;
+}
+
+/* Button base styles applied in component */
+button:focus-visible {
+  @apply focus-ring;
+}
+
+/* Smooth transitions */
+button,
+a,
+input,
+textarea,
+select {
+  @apply transition-colors duration-200;
+}
+
+/* Custom scrollbar for mobile */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
