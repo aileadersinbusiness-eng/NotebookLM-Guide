@@ -2,10 +2,12 @@
 
 import React, { useRef } from 'react';
 import { Navbar } from '@/components/layout/Navbar';
+import { Footer } from '@/components/layout/Footer';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { KnowledgeScanner } from '@/components/sections/KnowledgeScanner';
 import { ActionPlanResults } from '@/components/sections/ActionPlanResults';
 import { UseCasesSection } from '@/components/sections/UseCasesSection';
+import { CTASection } from '@/components/sections/CTASection';
 import { usePersonalization } from '@/hooks/usePersonalization';
 import { generatePlan } from '@/lib/plan-generator';
 import { QuizResponse } from '@/types';
@@ -76,6 +78,10 @@ export default function Home() {
       )}
 
       <UseCasesSection selectedRole={responses?.role} />
+
+      <CTASection onStartQuiz={handleGetStarted} />
+
+      <Footer />
     </main>
   );
 }
